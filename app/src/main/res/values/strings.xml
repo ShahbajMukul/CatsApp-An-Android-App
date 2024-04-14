@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CatsApp</string>
+    <string name="cat_api_key">live_G87TIXmvxtcGcuNAUxibKulomxHpoSu42yKWyG6OH09Tad36xqEOGUiFJDxqN6Rx</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
