@@ -21,7 +21,6 @@ class BreedDetailsFragment : Fragment() {
     }
 
     fun updateBreedDetails(breed: String) {
-        // Move the breed details fetching code here
         val url = "https://api.thecatapi.com/v1/breeds/search?q=$breed"
         binding.loadingIndicator.visibility = View.VISIBLE
 
@@ -38,22 +37,23 @@ class BreedDetailsFragment : Fragment() {
                     val breedImageId = breedDetails.getString("reference_image_id")
                     val breedImageUrl = "https://cdn2.thecatapi.com/images/${breedImageId}.jpg"
 
-                    // Update the UI with the breed details
                     binding.loadingIndicator.visibility = View.GONE
 
                     binding.breedName.text = breedName
                     binding.breedTemperament.text = breedTemperament
                     binding.origin.text = breedOrigin
-                    binding.breedLifeSpan.text = breedLifeSpan
+                    binding.breedLifeSpan.text = breedLifeSpan + " years"
                     binding.breedDescription.text = breedDescription
 
+                    // ref: chatgpt: ways to display images in kotlin using url; android studio
                     Picasso.get().load(breedImageUrl).into(binding.breedImage)
                 }
             },
             { error ->
                 // Handle the error
                 binding.loadingIndicator.visibility = View.GONE
-
+                val cringedCatUrl = "https://i.kym-cdn.com/entries/icons/original/000/026/638/cat.jpg"
+                Picasso.get().load(cringedCatUrl).into(binding.breedImage)
                 Log.e("CatsApp", "Error fetching breed details: ${error.message}")
             })
 

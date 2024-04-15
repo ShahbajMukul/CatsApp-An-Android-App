@@ -23,15 +23,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Create an instance of BreedDetailsFragment
         breedDetailsFragment = BreedDetailsFragment()
 
-        // Add the fragment to the container
+        // bring our fragment for cats card in the cointainer
         supportFragmentManager.beginTransaction()
             .replace(R.id.breedDetailsContainer, breedDetailsFragment)
             .commit()
 
-        val breedList = listOf("Loading...") // Placeholder list
+        val breedList = listOf("Loading...")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, breedList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.breedSpinner.adapter = adapter
@@ -77,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             { error ->
                 // Handle the error
                 Log.e("CatsApp", "Error fetching breeds: ${error.message}")
+
                 Snackbar.make(findViewById(android.R.id.content), "Error fetching cat breeds", Snackbar.LENGTH_LONG).show()
             })
 
